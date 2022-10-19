@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0%;
+        }
+        .sheetQuestion{
+            padding: 3%;
+            width: 90%;
+            font-size: 20px;
+        }
+        .optionA,
+        .optionB,
+        .optionC,
+        .optionD{
+            padding: 1%;
+            font-size: 18px;
+            width: 60%;
+        }
+        .sheetIndex,
+        .sheetAnswer{
+            padding: 1%;
+            font-size: 18px;
+            width: 60%;
+        }
+        .sheetAnswer,
+        .sheetIndex{
+            background-color: lightgreen;
+        }
+        .sheet_btn{
+            background-color: lightgreen;
+            padding: 2%;
+            border: none;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 20px;
+        }
+        .sheet_btn:hover{
+            background-color: whitesmoke;
+            color: lightgreen;
+        }
+        input{
+            margin-bottom: 1%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="">
+            <input type="text" name="sheetQuestion" class="sheetQuestion" id="sheetQuestion" placeholder="Question"><br>
+            Option A <input type="text" name="optionA" class="optionA" id="optionA" placeholder="Option A"><br>
+            Option B <input type="text" name="optionB" class="optionB" id="optionB" placeholder="Option B"><br>
+            Option C <input type="text" name="optionC" class="optionC" id="optionC" placeholder="Option C"><br>
+            Option D <input type="text" name="optionD" class="optionD" id="optionD" placeholder="Option D"><br><br>
+            <input type="text" name="sheetIndex" class="sheetIndex" id="sheetIndex" placeholder="Answer Index (A or B or C or D)"><br>
+            <input type="text" name="sheetAnswer" class="sheetAnswer" id="sheetAnswer" placeholder="Answer"><br><br>
+        </form>
+        <button class="sheet_btn" id="sheet_btn">Submit</button>
+    </div>
+    <div id="sheetList">
+    </div><br><br><br>
+    <button class="reset" id="reset">Reload</button>
+    <script>
+        const sheetQuestion = document.getElementById('sheetQuestion')
+        const sheetIndex = document.getElementById('sheetIndex')
+        const sheetAnswer = document.getElementById('sheetAnswer')
+        const optionA = document.getElementById('optionA')
+        const optionB= document.getElementById('optionB')
+        const optionC = document.getElementById('optionC')
+        const optionD = document.getElementById('optionD')
+        const sheetList = document.getElementById('sheetList')
+        const sheet_btn = document.getElementById('sheet_btn')
+
+        sheet_btn.addEventListener('click',() =>{
+            // const sheet_style = `{sheet:'${sheetQuestion.value}',answer:'${sheetAnswer.value}',A:'${optionA.value}',B:'${optionB.value}',C:'${optionC.value}',D:'${optionD.value}'}<br>`
+            const sheetQuestion_format = `sheet:'${sheetQuestion.value}'`
+            const sheetAnswer_format = `answer:'${sheetIndex.value}.  ${sheetAnswer.value}'`
+            const optionA_format = `A:'A. ${optionA.value}'`;
+            const optionB_format = `B:'B. ${optionB.value}'`;
+            const optionC_format = `C:'C. ${optionC.value}'`;
+            const optionD_format = `D:'D. ${optionD.value}'`;
+
+            
+           
+            if(sheetQuestion.value == '' || sheetIndex.value == '' || sheetAnswer.value == '' || optionA.value == '' || optionB.value == '' || optionC.value == '' || optionD.value == ''){
+                alert('Please fill in the empty space')
+            }else{
+                const sheet_head = document.createElement('h3')
+                sheet_head.textContent = `{${sheetQuestion_format},${sheetAnswer_format},${optionA_format},${optionB_format},${optionC_format},${optionD_format}},`
+                sheetList.appendChild(sheet_head)
+                sheetQuestion.value ='';
+                sheetIndex.value = '';
+                sheetAnswer.value = '';
+                optionA.value = '';
+                optionB.value = '';
+                optionC.value = '';
+                optionD.value = '';
+            }
+            // if(sheetAnswer_format === optionA_format || optionB_format || optionC_format || optionD_format){
+            //     console.log('Worked')
+            // } else{
+            //     alert('Error')
+            // }
+            // console.log(sheetAnswer_format === optionA_format)
+        })
+
+        const reset_button = document.getElementById('reset')
+        reset_button.addEventListener('click',()=>{
+            window.location.reload()
+        })
+
+        // else if(subjects.value == 'agriculture') {
+        //         const subjectlist_1 = document.createElement('p')
+        //         const subjectlist_2 = document.createElement('p')
+        //         const subjectlist_3 = document.createElement('p')
+        //         const subjectlist_4 = document.createElement('p')
+        //         const subjectlist_5 = document.createElement('p')
+
+                
+        //         const a_buttonRand1 = document.createElement('button')
+        //         const b_buttonRand1 = document.createElement('button')
+        //         const c_buttonRand1 = document.createElement('button')
+        //         const d_buttonRand1 = document.createElement('button')
+
+        //         const a_buttonRand2 = document.createElement('button')
+        //         const b_buttonRand2 = document.createElement('button')
+        //         const c_buttonRand2 = document.createElement('button')
+        //         const d_buttonRand2 = document.createElement('button')
+
+        //         const a_buttonRand3 = document.createElement('button')
+        //         const b_buttonRand3 = document.createElement('button')
+        //         const c_buttonRand3 = document.createElement('button')
+        //         const d_buttonRand3 = document.createElement('button')
+
+        //         const a_buttonRand4 = document.createElement('button')
+        //         const b_buttonRand4 = document.createElement('button')
+        //         const c_buttonRand4 = document.createElement('button')
+        //         const d_buttonRand4 = document.createElement('button')
+
+        //         const a_buttonRand5 = document.createElement('button')
+        //         const b_buttonRand5 = document.createElement('button')
+        //         const c_buttonRand5 = document.createElement('button')
+        //         const d_buttonRand5 = document.createElement('button')
+
+        //         const sheetAnswer1 = document.createElement('h3')
+        //         const sheetAnswer2 = document.createElement('h3')
+        //         const sheetAnswer3 = document.createElement('h3')
+        //         const sheetAnswer4 = document.createElement('h3')
+        //         const sheetAnswer5 = document.createElement('h3')
+
+
+        //         const rand1 = agriculture_demo[Math.floor(Math.random() * agriculture_demo.length)]
+        //         const rand2 = agriculture_demo[Math.floor(Math.random() * agriculture_demo.length)]
+        //         const rand3 = agriculture_demo[Math.floor(Math.random() * agriculture_demo.length)]
+        //         const rand4 = agriculture_demo[Math.floor(Math.random() * agriculture_demo.length)]
+        //         const rand5 = agriculture_demo[Math.floor(Math.random() * agriculture_demo.length)]
+
+        //         a_buttonRand1.textContent = rand1.A
+        //         b_buttonRand1.textContent = rand1.B
+        //         c_buttonRand1.textContent = rand1.C
+        //         d_buttonRand1.textContent = rand1.D
+
+        //         a_buttonRand2.textContent = rand2.A
+        //         b_buttonRand2.textContent = rand2.B
+        //         c_buttonRand2.textContent = rand2.C
+        //         d_buttonRand2.textContent = rand2.D
+
+        //         a_buttonRand3.textContent = rand3.A
+        //         b_buttonRand3.textContent = rand3.B
+        //         c_buttonRand3.textContent = rand3.C
+        //         d_buttonRand3.textContent = rand3.D
+
+        //         a_buttonRand4.textContent = rand4.A
+        //         b_buttonRand4.textContent = rand4.B
+        //         c_buttonRand4.textContent = rand4.C
+        //         d_buttonRand4.textContent = rand4.D
+
+        //         a_buttonRand5.textContent = rand5.A
+        //         b_buttonRand5.textContent = rand5.B
+        //         c_buttonRand5.textContent = rand5.C
+        //         d_buttonRand5.textContent = rand5.D
+
+
+        //         subjectlist_1.textContent = rand1.sheet
+        //         subjectlist_1.appendChild(a_buttonRand1)
+        //         subjectlist_1.appendChild(b_buttonRand1)
+        //         subjectlist_1.appendChild(c_buttonRand1)
+        //         subjectlist_1.appendChild(d_buttonRand1)
+        //         subjectlist_1.appendChild(sheetAnswer1)
+
+
+        //         subjectlist_2.textContent = rand2.sheet
+        //         subjectlist_2.appendChild(a_buttonRand2)
+        //         subjectlist_2.appendChild(b_buttonRand2)
+        //         subjectlist_2.appendChild(c_buttonRand2)
+        //         subjectlist_2.appendChild(d_buttonRand2)
+        //         subjectlist_2.appendChild(sheetAnswer2)
+
+        //         subjectlist_3.textContent = rand3.sheet
+        //         subjectlist_3.appendChild(a_buttonRand3)
+        //         subjectlist_3.appendChild(b_buttonRand3)
+        //         subjectlist_3.appendChild(c_buttonRand3)
+        //         subjectlist_3.appendChild(d_buttonRand3)
+        //         subjectlist_3.appendChild(sheetAnswer3)
+
+        //         subjectlist_4.textContent = rand4.sheet
+        //         subjectlist_4.appendChild(a_buttonRand4)
+        //         subjectlist_4.appendChild(b_buttonRand4)
+        //         subjectlist_4.appendChild(c_buttonRand4)
+        //         subjectlist_4.appendChild(d_buttonRand4)
+        //         subjectlist_4.appendChild(sheetAnswer4)
+
+
+        //         subjectlist_5.textContent = rand5.sheet
+        //         subjectlist_5.appendChild(a_buttonRand5)
+        //         subjectlist_5.appendChild(b_buttonRand5)
+        //         subjectlist_5.appendChild(c_buttonRand5)
+        //         subjectlist_5.appendChild(d_buttonRand5)
+        //         subjectlist_5.appendChild(sheetAnswer5)
+                
+
+        //         const examSheet1 = document.getElementById('examSheet1')
+        //         const examSheet2 = document.getElementById('examSheet2')
+        //         const examSheet3 = document.getElementById('examSheet3')
+        //         const examSheet4 = document.getElementById('examSheet4')
+        //         const examSheet5 = document.getElementById('examSheet5')
+
+        //         examSheet1.append(subjectlist_1)
+        //         examSheet2.append(subjectlist_2)
+        //         examSheet3.append(subjectlist_3)
+        //         examSheet4.append(subjectlist_4)
+        //         examSheet5.append(subjectlist_5)
+                
+                
+        //         a_buttonRand1.addEventListener('click',() =>{
+        //             if(a_buttonRand1.textContent == rand1.answer){
+        //                 sheetAnswer1.textContent = 'Correct'
+        //                 a_buttonRand1.disabled = true;
+        //                 b_buttonRand1.disabled = true;
+        //                 c_buttonRand1.disabled = true;
+        //                 d_buttonRand1.disabled = true;
+        //             }else{
+        //                 sheetAnswer1.textContent = 'Incorrect'
+        //                 a_buttonRand1.disabled = true;
+        //                 b_buttonRand1.disabled = true;
+        //                 c_buttonRand1.disabled = true;
+        //                 d_buttonRand1.disabled = true;
+        //             }
+        //         })
+        //         b_buttonRand1.addEventListener('click',() =>{
+        //             if(b_buttonRand1.textContent == rand1.answer){
+        //                 sheetAnswer1.textContent = 'Correct'
+        //                 a_buttonRand1.disabled = true;
+        //                 b_buttonRand1.disabled = true;
+        //                 c_buttonRand1.disabled = true;
+        //                 d_buttonRand1.disabled = true;
+        //             }else{
+        //                 sheetAnswer1.textContent = 'Incorrect'
+        //                 a_buttonRand1.disabled = true;
+        //                 b_buttonRand1.disabled = true;
+        //                 c_buttonRand1.disabled = true;
+        //                 d_buttonRand1.disabled = true;
+        //             }
+        //         })
+        //         c_buttonRand1.addEventListener('click',() =>{
+        //             if(c_buttonRand1.textContent == rand1.answer){
+        //                 sheetAnswer1.textContent = 'Correct';
+        //                 a_buttonRand1.disabled = true;
+        //                 b_buttonRand1.disabled = true;
+        //                 c_buttonRand1.disabled = true;
+        //                 d_buttonRand1.disabled = true;
+        //             }else{
+        //                 sheetAnswer1.textContent = 'Incorrect'
+        //                 a_buttonRand1.disabled = true;
+        //                 b_buttonRand1.disabled = true;
+        //                 c_buttonRand1.disabled = true;
+        //                 d_buttonRand1.disabled = true;
+        //             }
+        //         })
+        //         d_buttonRand1.addEventListener('click',() =>{
+        //             if(d_buttonRand1.textContent == rand1.answer){
+        //                 sheetAnswer1.textContent = 'Correct';
+        //                 a_buttonRand1.disabled = true;
+        //                 b_buttonRand1.disabled = true;
+        //                 c_buttonRand1.disabled = true;
+        //                 d_buttonRand1.disabled = true;
+        //             }else{
+        //                 sheetAnswer1.textContent = 'Incorrect'
+        //                 a_buttonRand1.disabled = true;
+        //                 b_buttonRand1.disabled = true;
+        //                 c_buttonRand1.disabled = true;
+        //                 d_buttonRand1.disabled = true;
+        //             }
+        //         })
+
+
+
+
+        //         a_buttonRand2.addEventListener('click',() =>{
+        //             if(a_buttonRand2.textContent == rand2.answer){
+        //                 sheetAnswer2.textContent = 'Correct'
+        //                 a_buttonRand2.disabled = true;
+        //                 b_buttonRand2.disabled = true;
+        //                 c_buttonRand2.disabled = true;
+        //                 d_buttonRand2.disabled = true;
+        //             }else{
+        //                 sheetAnswer2.textContent = 'Incorrect'
+        //                 a_buttonRand2.disabled = true;
+        //                 b_buttonRand2.disabled = true;
+        //                 c_buttonRand2.disabled = true;
+        //                 d_buttonRand2.disabled = true;
+        //             }
+        //         })
+        //         b_buttonRand2.addEventListener('click',() =>{
+        //             if(b_buttonRand2.textContent == rand2.answer){
+        //                 sheetAnswer2.textContent = 'Correct';
+        //                 a_buttonRand2.disabled = true;
+        //                 b_buttonRand2.disabled = true;
+        //                 c_buttonRand2.disabled = true;
+        //                 d_buttonRand2.disabled = true;
+        //             }else{
+        //                 sheetAnswer2.textContent = 'Incorrect';
+        //                 a_buttonRand2.disabled = true;
+        //                 b_buttonRand2.disabled = true;
+        //                 c_buttonRand2.disabled = true;
+        //                 d_buttonRand2.disabled = true;
+        //             }
+        //         })
+        //         c_buttonRand2.addEventListener('click',() =>{
+        //             if(c_buttonRand2.textContent == rand2.answer){
+        //                 sheetAnswer2.textContent = 'Correct';
+        //                 a_buttonRand2.disabled = true;
+        //                 b_buttonRand2.disabled = true;
+        //                 c_buttonRand2.disabled = true;
+        //                 d_buttonRand2.disabled = true;
+        //             }else{
+        //                 sheetAnswer2.textContent = 'Incorrect';
+        //                 a_buttonRand2.disabled = true;
+        //                 b_buttonRand2.disabled = true;
+        //                 c_buttonRand2.disabled = true;
+        //                 d_buttonRand2.disabled = true;
+        //             }
+        //         })
+        //         d_buttonRand2.addEventListener('click',() =>{
+        //             if(d_buttonRand2.textContent == rand2.answer){
+        //                 sheetAnswer2.textContent = 'Correct';
+        //                 a_buttonRand2.disabled = true;
+        //                 b_buttonRand2.disabled = true;
+        //                 c_buttonRand2.disabled = true;
+        //                 d_buttonRand2.disabled = true;
+        //             }else{
+        //                 sheetAnswer2.textContent = 'Incorrect';
+        //                 a_buttonRand2.disabled = true;
+        //                 b_buttonRand2.disabled = true;
+        //                 c_buttonRand2.disabled = true;
+        //                 d_buttonRand2.disabled = true;
+        //             }
+        //         })
+
+
+
+
+        //         a_buttonRand3.addEventListener('click',() =>{
+        //             if(a_buttonRand3.textContent == rand3.answer){
+        //                 sheetAnswer3.textContent = 'Correct';
+        //                 a_buttonRand3.disabled = true;
+        //                 b_buttonRand3.disabled = true;
+        //                 c_buttonRand3.disabled = true;
+        //                 d_buttonRand3.disabled = true;
+        //             }else{
+        //                 sheetAnswer3.textContent = 'Incorrect';
+        //                 a_buttonRand3.disabled = true;
+        //                 b_buttonRand3.disabled = true;
+        //                 c_buttonRand3.disabled = true;
+        //                 d_buttonRand3.disabled = true;
+        //             }
+        //         })
+        //         b_buttonRand3.addEventListener('click',() =>{
+        //             if(b_buttonRand3.textContent == rand3.answer){
+        //                 sheetAnswer3.textContent = 'Correct';
+        //                 a_buttonRand3.disabled = true;
+        //                 b_buttonRand3.disabled = true;
+        //                 c_buttonRand3.disabled = true;
+        //                 d_buttonRand3.disabled = true;
+        //             }else{
+        //                 sheetAnswer3.textContent = 'Incorrect';
+        //                 a_buttonRand3.disabled = true;
+        //                 b_buttonRand3.disabled = true;
+        //                 c_buttonRand3.disabled = true;
+        //                 d_buttonRand3.disabled = true;
+        //             }
+        //         })
+        //         c_buttonRand3.addEventListener('click',() =>{
+        //             if(c_buttonRand3.textContent == rand3.answer){
+        //                 sheetAnswer3.textContent = 'Correct';
+        //                 a_buttonRand3.disabled = true;
+        //                 b_buttonRand3.disabled = true;
+        //                 c_buttonRand3.disabled = true;
+        //                 d_buttonRand3.disabled = true;
+        //             }else{
+        //                 sheetAnswer3.textContent = 'Incorrect';
+        //                 a_buttonRand3.disabled = true;
+        //                 b_buttonRand3.disabled = true;
+        //                 c_buttonRand3.disabled = true;
+        //                 d_buttonRand3.disabled = true;
+        //             }
+        //         })
+        //         d_buttonRand3.addEventListener('click',() =>{
+        //             if(d_buttonRand3.textContent == rand3.answer){
+        //                 sheetAnswer3.textContent = 'Correct';
+        //                 a_buttonRand3.disabled = true;
+        //                 b_buttonRand3.disabled = true;
+        //                 c_buttonRand3.disabled = true;
+        //                 d_buttonRand3.disabled = true;
+        //             }else{
+        //                 sheetAnswer3.textContent = 'Incorrect';
+        //                 a_buttonRand3.disabled = true;
+        //                 b_buttonRand3.disabled = true;
+        //                 c_buttonRand3.disabled = true;
+        //                 d_buttonRand3.disabled = true;
+        //             }
+        //         })
+
+
+
+
+        //         a_buttonRand4.addEventListener('click',() =>{
+        //             if(a_buttonRand4.textContent == rand4.answer){
+        //                 sheetAnswer4.textContent = 'Correct';
+        //                 a_buttonRand4.disabled = true;
+        //                 b_buttonRand4.disabled = true;
+        //                 c_buttonRand4.disabled = true;
+        //                 d_buttonRand4.disabled = true;
+        //             }else{
+        //                 sheetAnswer4.textContent = 'Incorrect';
+        //                 a_buttonRand4.disabled = true;
+        //                 b_buttonRand4.disabled = true;
+        //                 c_buttonRand4.disabled = true;
+        //                 d_buttonRand4.disabled = true;
+        //             }
+        //         })
+        //         b_buttonRand4.addEventListener('click',() =>{
+        //             if(b_buttonRand4.textContent == rand4.answer){
+        //                 sheetAnswer4.textContent = 'Correct';
+        //                 a_buttonRand4.disabled = true;
+        //                 b_buttonRand4.disabled = true;
+        //                 c_buttonRand4.disabled = true;
+        //                 d_buttonRand4.disabled = true;
+        //             }else{
+        //                 sheetAnswer4.textContent = 'Incorrect';
+        //                 a_buttonRand4.disabled = true;
+        //                 b_buttonRand4.disabled = true;
+        //                 c_buttonRand4.disabled = true;
+        //                 d_buttonRand4.disabled = true;
+        //             }
+        //         })
+        //         c_buttonRand4.addEventListener('click',() =>{
+        //             if(c_buttonRand4.textContent == rand4.answer){
+        //                 sheetAnswer4.textContent = 'Correct';
+        //                 a_buttonRand4.disabled = true;
+        //                 b_buttonRand4.disabled = true;
+        //                 c_buttonRand4.disabled = true;
+        //                 d_buttonRand4.disabled = true;
+        //             }else{
+        //                 sheetAnswer4.textContent = 'Incorrect';
+        //                 a_buttonRand4.disabled = true;
+        //                 b_buttonRand4.disabled = true;
+        //                 c_buttonRand4.disabled = true;
+        //                 d_buttonRand4.disabled = true;
+        //             }
+        //         })
+        //         d_buttonRand4.addEventListener('click',() =>{
+        //             if(d_buttonRand4.textContent == rand4.answer){
+        //                 sheetAnswer4.textContent = 'Correct';
+        //                 a_buttonRand4.disabled = true;
+        //                 b_buttonRand4.disabled = true;
+        //                 c_buttonRand4.disabled = true;
+        //                 d_buttonRand4.disabled = true;
+        //             }else{
+        //                 sheetAnswer4.textContent = 'Incorrect';
+        //                 a_buttonRand4.disabled = true;
+        //                 b_buttonRand4.disabled = true;
+        //                 c_buttonRand4.disabled = true;
+        //                 d_buttonRand4.disabled = true;
+        //             }
+        //         })
+
+
+
+
+        //         a_buttonRand5.addEventListener('click',() =>{
+        //             if(a_buttonRand5.textContent == rand5.answer){
+        //                 sheetAnswer5.textContent = 'Correct';
+        //                 a_buttonRand5.disabled = true;
+        //                 b_buttonRand5.disabled = true;
+        //                 c_buttonRand5.disabled = true;
+        //                 d_buttonRand5.disabled = true;
+        //             }else {
+        //                 sheetAnswer5.textContent = 'Incorrect'
+        //                 a_buttonRand5.disabled = true;
+        //                 b_buttonRand5.disabled = true;
+        //                 c_buttonRand5.disabled = true;
+        //                 d_buttonRand5.disabled = true;
+        //             }
+        //         })
+        //         b_buttonRand5.addEventListener('click',() =>{
+        //             if(b_buttonRand5.textContent == rand5.answer){
+        //                 sheetAnswer5.textContent = 'Correct'
+        //                 a_buttonRand5.disabled = true;
+        //                 b_buttonRand5.disabled = true;
+        //                 c_buttonRand5.disabled = true;
+        //                 d_buttonRand5.disabled = true;
+        //             }else {
+        //                 sheetAnswer5.textContent = 'Incorrect'
+        //                 a_buttonRand5.disabled = true;
+        //                 b_buttonRand5.disabled = true;
+        //                 c_buttonRand5.disabled = true;
+        //                 d_buttonRand5.disabled = true;
+        //             }
+        //         })
+        //         c_buttonRand5.addEventListener('click',() =>{
+        //             if(c_buttonRand5.textContent == rand5.answer){
+        //                 sheetAnswer5.textContent = 'Correct'
+        //                 a_buttonRand5.disabled = true;
+        //                 b_buttonRand5.disabled = true;
+        //                 c_buttonRand5.disabled = true;
+        //                 d_buttonRand5.disabled = true;
+        //             }else {
+        //                 sheetAnswer5.textContent = 'Incorrect'
+        //                 a_buttonRand5.disabled = true;
+        //                 b_buttonRand5.disabled = true;
+        //                 c_buttonRand5.disabled = true;
+        //                 d_buttonRand5.disabled = true;
+        //             }
+        //         })
+        //         d_buttonRand5.addEventListener('click',() =>{
+        //             if(d_buttonRand5.textContent == rand5.answer){
+        //                 sheetAnswer5.textContent = 'Correct'
+        //                 d_buttonRand5.disabled = true
+        //                 b_buttonRand5.disabled = true
+        //                 c_buttonRand5.disabled = true
+        //                 a_buttonRand5.disabled = true
+        //             }else {
+        //                 sheetAnswer5.textContent = 'Incorrect'
+        //                 b_buttonRand5.disabled = true
+        //                 c_buttonRand5.disabled = true
+        //                 a_buttonRand5.disabled = true
+        //                 a_buttonRand5.disabled = true
+        //             }
+        //         })
+    </script>
+</body>
+</html>
